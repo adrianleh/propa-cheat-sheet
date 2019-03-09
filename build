@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+latexmk -xelatex -latexoption="-shell-escape" $SCRIPTPATH/propa-cheat-sheet.tex
+
+
+
