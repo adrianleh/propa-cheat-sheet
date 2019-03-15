@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, twocolumn]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[light,condensed,math]{kurier}
@@ -11,6 +11,8 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{minted}
+\usepackage{microtype}
+\usepackage[all]{nowidow}
 
 \theoremstyle{break}
 
@@ -34,7 +36,7 @@
 \begin{document}
 	\input{include/lambda}
 	\input{include/types}
-	\newpage
+	\clearpage
 	\section{Appendices}
 	\input{include/appendix-haskell-prelude}
 	\input{include/appendix-prolog-functions}

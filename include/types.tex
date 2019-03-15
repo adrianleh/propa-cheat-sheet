@@ -1,22 +1,32 @@
 \section{Typisierung}
 \begin{center}
-	\includegraphics[width=0.75\textwidth]{images/types.png}	
+	\includegraphics[width=\columnwidth]{images/types.png}	
 \end{center}
 \begin{center}
-		\includegraphics[width=0.75\textwidth]{images/let.png}
+		\includegraphics[width=\columnwidth]{images/let.png}
 \end{center}
 Beispiel:\\
 \begin{center}
-	\includegraphics[width=0.75\textwidth]{images/let_ex.png}
+	\includegraphics[width=\columnwidth]{images/let_ex.png}
 \end{center}
-\subsection{Typisierungsgleichungen}
-$$APP \medspace\frac{\Gamma \vdash t_1 : \alpha_2 \medspace\medspace\medspace \Gamma \vdash t_2 : \alpha_3}{\Gamma \vdash t_1 \medspace t_2 : \alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_2 = \alpha_3 -> \alpha_1\}$$
+\subsection{Constraint basierte Typisierung}
 
-$$ABS \medspace\frac{\Gamma, x : \alpha_2 \vdash t : \alpha_3}{\Gamma \vdash \lambda x.t:\alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_2 -> \alpha_3\}$$
+\begin{enumerate}
+	\item Erstelle Herleitungsbaum. Verwende immer frische Typvariablen $\alpha_i$. Beginnend unten mit $\alpha_1$
+	\item Stelle Constraints $C$ für die $\alpha_i$ auf (siehe \ref{typ:con:crea})
+	\item Bestimme $\sigma_{mgu}$ der die Gleichungen löst
+	\item Typ: $\sigma_{mgu}(\alpha_1)$
+\end{enumerate}
 
-$$VAR \medspace\frac{(x: \alpha_1)(x) = \alpha_2}{\Gamma \vdash x : \alpha_2} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_2\}$$
+\subsubsection{Constrainterstellung}
+\label{typ:con:crea}
+$$APP \medspace\frac{\Gamma \vdash t_1 : \alpha_2 \medspace\medspace\medspace \Gamma \vdash t_2 : \alpha_3}{\Gamma \vdash t_1 \medspace t_2 : \alpha_1} \rightsquigarrow C = C_0 \cup \{\alpha_2 = \alpha_3 \rightarrow \alpha_1\}$$
 
-$$Const \medspace\frac{c \in Const}{\Gamma \vdash x : \alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_c\}$$
+$$ABS \medspace\frac{\Gamma, x : \alpha_2 \vdash t : \alpha_3}{\Gamma \vdash \lambda x.t:\alpha_1} \rightsquigarrow C = C_0 \cup \{\alpha_1 = \alpha_2 \rightarrow \alpha_3\}$$
+
+$$VAR \medspace\frac{(x: \alpha_1)(x) = \alpha_2}{\Gamma \vdash x : \alpha_2} \rightsquigarrow C = C_0 \cup \{\alpha_1 = \alpha_2\}$$
+
+$$Const \medspace\frac{c \in Const}{\Gamma \vdash x : \alpha_1} \rightsquigarrow C = C_0 \cup \{\alpha_1 = \alpha_c\}$$
 
 \subsubsection{Let}
 Betrachte:
