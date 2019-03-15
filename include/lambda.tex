@@ -61,4 +61,11 @@ Beispiel:\\
 \begin{center}
 	\includegraphics[width=0.75\textwidth]{images/let_ex.png}
 \end{center}
+\subsubsection{Typisierungsgleichungen}
+$$APP \medspace\frac{\Gamma \vdash t_1 : \alpha_2 \medspace\medspace\medspace \Gamma \vdash t_2 : \alpha_3}{\Gamma \vdash t_1 \medspace t_2 : \alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_2 = \alpha_3 -> \alpha_1\}$$
 
+$$ABS \medspace\frac{\Gamma, x : \alpha_2 \vdash t : \alpha_3}{\Gamma \vdash \lambda x.t:\alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_2 -> \alpha_3\}$$
+
+$$VAR \medspace\frac{(x: \alpha_1)(x) = \alpha_2}{\Gamma \vdash x : \alpha_2} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_2\}$$
+
+$$Const \medspace\frac{c \in Const}{\Gamma \vdash x : \alpha_1} \rightsquigarrow C_{new} = C \cup \{\alpha_1 = \alpha_c\}$$
