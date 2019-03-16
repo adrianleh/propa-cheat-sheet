@@ -1,0 +1,19 @@
+\section{Design by contract}
+\subsection{JML}
+
+\texttt{@requires} und \texttt{@ensures} als Syntax für Vor- und Nachbedingung\\
+Syntax:
+\begin{itemize}
+  \item $a ==> b$: a implziert b
+  \item $a <==> b$: a gdw. b
+  \item $a <=!=> b$: a gdw. nicht b
+  \item $\backslash result$: Return wert
+  \item $\backslash old(E)$: Wert von E im Status vor der Methodenausführung
+\end{itemize}
+Auch möglich $\backslash forall$ oder $\backslash exists$ zu verwenden.\\
+
+Methoden können als $@pure$ annotiert werden.
+
+\subsection{Liskov Substitution Principle}
+Overriding methods must ensure:\\
+\textbf{Precondition cannot be stronger} and \textbf{Postcondition cannot be weaker}\\

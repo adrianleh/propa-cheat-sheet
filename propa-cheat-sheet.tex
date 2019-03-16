@@ -16,13 +16,6 @@
 
 \theoremstyle{break}
 
-\usepackage{titlesec}
-\setcounter{secnumdepth}{4}
-\titleformat{\paragraph}
-{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
-\titlespacing*{\paragraph}
-{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
 \newtheorem{formula}{Formel}[section]
 \newtheorem{defi}{Definition}[section]
 \newtheorem{ann}{Bemerkung}[section]
@@ -37,8 +30,13 @@
 	\input{include/lambda}
 	\input{include/types}
 	\input{include/MPI}
+	\input{include/parallel}
+	\input{include/design-by-contract}
 	\clearpage
 	\section{Appendices}
 	\input{include/appendix-haskell-prelude}
+	\newpage
 	\input{include/appendix-prolog-functions}
+	\newpage
+	\input{include/appendix-java-parallel}
 \end{document}

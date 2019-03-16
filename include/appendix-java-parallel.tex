@@ -1,0 +1,142 @@
+% !TeX root = ../propa-cheat-sheet.tex
+\appendix\section{Java Reference}
+\paragraph{\texttt{java.util.Thread}}
+\begin{minted}[breaklines]{java}
+void Thread#run()
+boolean Thread#isInterrupted()
+void Thread#interrupt()
+boolean Thread#isAlive()
+void Thread#sleep(int)
+void Thread#join()
+\end{minted}
+\paragraph{\texttt{volatile}}
+\begin{minted}[breaklines]{java}
+class A {
+    volatile Type name; // prevent caching and reordering around usages
+}
+\end{minted}
+\paragraph{\texttt{AtomicInteger}}
+\begin{minted}[breaklines]{java}
+AtomicInteger(int)
+int AtomicInteger#get()
+int AtomicInteger#incrementAndGet()
+int AtomicInteger#decrementAndGet()
+boolean AtomicInteger#compareAndSet(int, int) // first parameter oldVal, second parameter sndVal; replaces iff atomic integer has value oldVal
+\end{minted}
+\paragraph{\texttt{Locks}}
+\begin{minted}[breaklines]{java}
+void Lock#lock()
+void Lock#unlock()
+boolean Lock#tryLock() // only take lock if it's avb
+\end{minted}
+Implementation of interface: \texttt{ReentrantLock}
+\begin{minted}[breaklines]{java}
+ReentrantLock​(boolean) // Constructor with fair option
+\end{minted}
+\paragraph{\texttt{Semaphore}}
+Allows n threads into a critical section
+\begin{minted}[breaklines]{java}
+Semaphore(int, boolean) // Constructor with amoint and fair option
+void Semaphore#aquire()
+void Semaphore#release()
+boolean Semaphore#tryAquire()
+\end{minted}
+\paragraph{\texttt{CyclicBarrier}}
+\begin{minted}[breaklines]{java}
+CyclicBarrier(int)
+void CyclicBarrier#await() // once called n times, all threads resume
+\end{minted}
+\paragraph{\texttt{CountDownLatch}}
+Just like cyclic barrier only non-reusable: After n calls of \texttt{await} let's all threads through
+
+\paragraph{\texttt{ExecutorServices}}
+\begin{minted}[breaklines]{java}
+Executors.newSingleThreadExecutor()
+Executors.newFixedThreadPool(int)
+Executors.newCachedThreadPool()
+\end{minted}
+Example:
+\begin{minted}[breaklines]{java}
+ExecutorService executor = Executors.newSingleThreadExecutor(); executor.execute(() -> {
+    String threadName = Thread.currentThread().getName(); System.out.println("Hello " + threadName);
+});
+
+try {
+    executor.shutdown();
+    executor.awaitTermination(5, TimeUnit.SECONDS);
+} catch(InterruptedException ex) { } finally {
+     if (!executor.isTerminated()) {
+          executor.shutdownNow();
+     } 
+}
+\end{minted}
+\paragraph{\texttt{Futures}}
+\begin{minted}[breaklines]{java}
+<T> Future<T>#submit(Callable<T> callable)
+\end{minted}
+ 
+\begin{minted}[breaklines]{java}
+ExecutorService executorService = Executors.newCachedThreadPool(); 
+List<Future<Integer>> futures = new ArrayList<Future<Integer>>(); 
+for (int i = 0; i < 10; i++) {
+    final int currentValue = i;
+    futures.add(executorService.submit(() -> { return currentValue; }));
+}
+for (Future<Integer> future : futures) { 
+    try {
+         Integer result = future.get();
+         System.out.println(result);
+    } catch (ExecutionException ex) {}
+} 
+executorService.shutdown();
+\end{minted}
+
+\paragraph{\texttt{Completeable Future}}
+\begin{minted}[breaklines]{java}
+CompletableFuture<Integer> futureCount = CompletableFuture.supplyAsync( () -> {
+    try {
+         // simulate long running task 
+         Thread.sleep(5000);
+    } catch (InterruptedException ex) { }
+    return 20; 
+    }
+);
+CompletableFuture<String> modified = futureCount.thenApply((Integer count) -> {
+     int transformedValue = count * 10;
+     return transformedValue; 
+     }
+).thenApply(transformed -> "Finally create a string: " + transformed);
+System.out.println(modified.get());
+\end{minted}
+
+
+\paragraph{\texttt{BlockingQueue}}
+\begin{minted}[breaklines]{java}
+T BlockingQueue<T>#take()
+BlockingQueue<T>#put(T)
+\end{minted}
+Concrete impls:
+\begin{itemize}
+	\item LinkedBlockingQueue - unlimited
+	\item ArrayBlockingQueue - limited
+	\item PriorityBlockingQueue - sorted
+\end{itemize}
+
+\paragraph{\texttt{ForkJoin}}
+\begin{minted}[breaklines]{java}
+ForkJoinPool fjPool = new ForkJoinPool();
+MyTask myTask = new MyTask(...);
+fjPool.invoke(myTask);
+\end{minted}
+\begin{minted}[breaklines]{java}
+public class MyTask extends RecursiveTask<Integer> {
+@Override
+public static Integer compute() {
+// calculate something and return if problem small
+MyTask leftTask = new MyTask(...); 
+MyTask rightTask = new MyTask(...);
+leftTask.fork();
+rightTask.compute();
+leftTask.join();
+}
+\end{minted}
