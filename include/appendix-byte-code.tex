@@ -1,0 +1,66 @@
+\appendix\section{Java  ByteCode}
+Beispiele:\\
+\textbf{Basic:}
+\begin{minted}[breaklines]{java}
+void calc(int x, int y) {
+    int z = 4;
+    x = y * z + x; 
+}
+\end{minted}
+\begin{lstlisting}[language=JVMIS]
+// Lade Konstante 4
+iconst_4
+// Schreibe in z
+istore_3
+// Lade y
+iload_2
+// Lade z
+iload_3
+// y * z
+imul
+// Lade x 
+iload_1
+// (y * z) + x 
+iadd
+// Speichere x
+istore_1
+\end{lstlisting}
+\noindent\rule{\columnwidth}{0.4pt}
+\textbf{If:}
+\begin{minted}[breaklines]{java}
+if(x==4) { A } else { B }
+\end{minted}
+\begin{lstlisting}[language=JVMIS]
+    iload 0 // x laden
+    bipush 4
+    if_icmpeq label0 // falls gleich springe zu label0 
+    goto label1 // springe zu label1
+label0:
+    A // then−Teil
+    goto label2 
+label1:
+    B // else−Teil
+    goto label2 
+label2:
+    // weitere Befehle
+\end{lstlisting}
+\noindent\rule{\columnwidth}{0.4pt}
+\textbf{While:}
+\begin{minted}[breaklines]{java}
+while (x<10) { A }
+\end{minted}
+\begin{lstlisting}[language=JVMIS]
+loopheader:
+    iload 0 // x laden
+    bipush 10
+    if_icmplt loopbody // falls kleiner springe zu loopbody 
+    goto afterloop // springe zu afterloop
+loopbody:
+    A // Schleifenkoerper
+    goto loopheader // springe zu loopheader (naechste Iteration) 
+afterloop:
+    // weitere Befehle
+\end{lstlisting}
+\noindent\rule{\columnwidth}{0.4pt}
+\textbf{Call:}\\
+\includegraphics[width=\columnwidth]{images/byte_code_call.png}

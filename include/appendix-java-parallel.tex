@@ -131,7 +131,7 @@ fjPool.invoke(myTask);
 \begin{minted}[breaklines]{java}
 public class MyTask extends RecursiveTask<Integer> {
 @Override
-public static Integer compute() {
+public Integer compute() {
 // calculate something and return if problem small
 MyTask leftTask = new MyTask(...); 
 MyTask rightTask = new MyTask(...);

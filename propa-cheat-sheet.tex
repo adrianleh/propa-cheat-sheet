@@ -1,7 +1,7 @@
 \documentclass[a4paper, twocolumn]{article}
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[light,condensed,math]{kurier}
+\usepackage[utf8]{inputenc}
+%\usepackage[light,condensed,math]{kurier}
 \usepackage[ngerman]{babel}
 \usepackage{ntheorem}
 \usepackage{graphicx}
@@ -13,8 +13,17 @@
 \usepackage{minted}
 \usepackage{microtype}
 \usepackage[all]{nowidow}
-
+\usepackage{centernot}
+\usepackage{listings}
 \theoremstyle{break}
+
+\lstset{
+	basicstyle=\ttfamily,
+	columns=fullflexible,
+	frame=single,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
 
 \newtheorem{formula}{Formel}[section]
 \newtheorem{defi}{Definition}[section]
@@ -30,8 +39,10 @@
 	\input{include/lambda}
 	\input{include/types}
 	\input{include/MPI}
+	\input{include/C}
 	\input{include/parallel}
 	\input{include/design-by-contract}
+	\input{include/compiler}
 	\clearpage
 	\section{Appendices}
 	\input{include/appendix-haskell-prelude}
@@ -39,4 +50,6 @@
 	\input{include/appendix-prolog-functions}
 	\newpage
 	\input{include/appendix-java-parallel}
+	\newpage
+	\input{include/appendix-byte-code}
 \end{document}

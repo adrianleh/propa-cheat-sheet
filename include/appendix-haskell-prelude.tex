@@ -43,6 +43,7 @@ zip = zipWith (,)
 unzip :: [(a, b)] -> ([a], [b])
 \end{minted}
 \subsubsection{Folding}
+
 \textbf{Right to left:}
 \begin{minted}[breaklines]{haskell}
 foldr :: (a -> b -> b) -> b -> t a -> b
@@ -59,6 +60,15 @@ Usage:
 \begin{minted}[breaklines]{haskell}
 folded = foldl (\acc -> \val -> newAcc) acc coll
 \end{minted}
+\textbf{Bsp.:}
+\begin{minted}[breaklines]{haskell}
+foldr (+) 0 [1,2,3,4]
+\end{minted}
+berechnet den Wert (1+(2+(3+(4+0)))) – rechts-geklammert 
+\begin{minted}[breaklines]{haskell}
+foldl (+) 0 [1,2,3,4]
+\end{minted}
+den Wert ((((0+1)+2)+3)+4) – links-geklammert\\
 \subsubsection{Tuples}
 \begin{minted}[breaklines]{haskell}
 fst :: (a,b) -> a
