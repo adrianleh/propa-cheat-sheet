@@ -30,7 +30,7 @@ Eine (kontextfreie) Grammatik ist genau dann eine SLL(k)-Grammatik, wenn für al
 \textbf{Für alle Produktionen $A \rightarrow \alpha \mid \beta$:}\\
 Falls $\alpha \nRightarrow^{*} \epsilon$ und $\beta \nRightarrow^{*} \epsilon$, so muss gelten:
 $$First(\alpha) \cap First(\beta) = \emptyset$$
-Falls $\alpha \nRightarrow^{*} \epsilon$, so zusätzlich gelten:
+Falls $\alpha \Rightarrow^{*} \epsilon$, so zusätzlich gelten:
 $$Follow(A) \cap First(\beta) = \emptyset$$
 \subsection{Abstrakte Syntax}
 \includegraphics[width=\columnwidth]{images/abstract_syntax.png}
