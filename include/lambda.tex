@@ -2,7 +2,7 @@
 \subsection{Untypisiertes Lambdakalkül}
 \textbf{linksassoziativ}
 \begin{defi}[$\alpha$-Äquiv]
-	Terme $t_1$,  $t_2$ $\alpha$-äquivalent $\Leftrightarrow$ $t1$ durch Ersetzen der gebunden Variablen in $t2$ überführbar
+	Terme $t_1$,  $t_2$ $\alpha$-äquivalent $\Leftrightarrow$ $t_1$ durch Ersetzen der gebunden Variablen in $t_2$ überführbar
 \end{defi}
 Beispiel: $\lambda y.y \stackrel{\alpha}{=} \lambda x.x$
 
@@ -45,7 +45,7 @@ $$\Rightarrow \lambda y. (\lambda x. y (\lambda z.z) x)) (\lambda y.y)$$
 $$\Rightarrow \lambda x. (\lambda y.y) (\lambda z.z) x))$$
 
 \subsubsection{Rekursion}
-Parametrisiere rekursiven aufruf als erstes Argument, verwende Y kombinator\\
+Parametrisiere rekursiven Aufruf als erstes Argument, verwende Y kombinator\\
 Beispiel:\\
 $$f = \lambda fak. \lambda n. \medspace (\text{isZero}\medspace n)  \medspace c_1 \medspace (\text{times} \medspace n \medspace (fak (\text{sub}\medspace n \medspace c_1)))$$
 $$fak = Y \medspace f$$

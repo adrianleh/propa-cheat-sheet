@@ -22,7 +22,10 @@ $Follow(X)$ bestimmen:
 	\item Falls $A \rightarrow aXb$ und $\epsilon \in First(b)$, dann füge $First(b) \cup Follow(A)$ zu $Follow(X)$, 
 \end{enumerate} 
 \subsubsection{SLL(k)-Kriterium}
-\includegraphics[width=\columnwidth]{images/SSLk.png}
+Eine (kontextfreie) Grammatik ist genau dann eine SLL(k)-Grammatik, wenn für alle Paare von Produktionen
+\(A \rightarrow \alpha|\beta, \alpha \neq \beta\), gilt:
+\[\mathit{First}_k(\alpha\mathit{Follow}_k(A)) \cap \mathit{First}_k(\beta\mathit{Follow}_k(A)) = \varnothing\]
+
 \subsubsection{SLL(1)-Kriterium}
 \textbf{Für alle Produktionen $A \rightarrow \alpha \mid \beta$:}\\
 Falls $\alpha \nRightarrow^{*} \epsilon$ und $\beta \nRightarrow^{*} \epsilon$, so muss gelten:
