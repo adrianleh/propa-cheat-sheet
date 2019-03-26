@@ -49,3 +49,16 @@ Parametrisiere rekursiven Aufruf als erstes Argument, verwende Y kombinator\\
 Beispiel:\\
 $$f = \lambda fak. \lambda n. \medspace (\text{isZero}\medspace n)  \medspace c_1 \medspace (\text{times} \medspace n \medspace (fak (\text{sub}\medspace n \medspace c_1)))$$
 $$fak = Y \medspace f$$
+
+\subsubsection{Church Zahlen}
+\begin{align*}
+c_0 &= \lambda s.\ \lambda\ z.\ z\\
+c_1 &= \lambda s.\ \lambda\ z.\ s\ z\\
+& \cdots \\
+c_n &= \lambda s. \lambda z.\ s^n\ z\\
+succ &= \lambda n. \lambda s. \lambda z.\ s\ (n\ s\ z)\\
+plus &= \lambda m. \lambda n. \lambda s. \lambda z.\ m\ s\ (n\ s\ z)\\
+times &= \lambda m. \lambda n. \lambda s.\ n\ (m\ s)\\
+exp &= \lambda m. \lambda n.\ n\ m\\
+\end{align*}
+
