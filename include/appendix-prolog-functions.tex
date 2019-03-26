@@ -1,4 +1,10 @@
 \appendix\section{Useful prolog functions}
+\subsection{Types}
+\begin{minted}[breaklines]{prolog}
+atom(X) /** Wahr falls Term ein Atom **/
+integer(X) /** Wahr falls Integer **/
+var(X) /** Wahr falls freie Variable **/
+\end{minted}
 \subsection{Listen}
 \begin{minted}[breaklines]{prolog}
 member(X,L) /** is X in L **/
@@ -9,4 +15,5 @@ permute(P,X) /** permutations of P **/
 \subsection{Arithmetic}
 \begin{minted}[breaklines]{prolog}
 X is 3*A+4 /** nicht rückwärts ausführbar! **/
+between(Low,High,Value) /** Integers between limits **/  
 \end{minted}
