@@ -64,3 +64,12 @@ afterloop:
 \noindent\rule{\columnwidth}{0.4pt}
 \textbf{Call:}\\
 \includegraphics[width=\columnwidth]{images/byte_code_call.png}
+\textbf{Conditional jumps:}
+\begin{lstlisting}[language=JVMIS]
+if_icmpeq target // Jump if equal
+if_icmpne target // Jump if NOT equal
+if_icmpge target // Jump if equal or greater than
+if_icmpgt target // Jump greater than
+if_icmple target // Jump if equal or less than
+if_icmplt target // Jump if less than
+\end{lstlisting}
