@@ -40,3 +40,9 @@ $$\frac{\Gamma \vdash t_1: \alpha_2 \medspace \Gamma' \vdash t_2: \alpha_3}{\Gam
 	\item Bestimme constraints rechter Teilbaum $C_r$
 	\item Bestimme $\sigma_{(C_0 \cup C_r \cup C_{let}')}$
 \end{enumerate}
+
+Beachte: Führe bei \texttt{VAR} neuen kleineren Typ ein
+
+Bsp.:
+
+$$VAR \frac{\splitdfrac{\Gamma'(f) = \forall \alpha. \forall \beta. \alpha \rightarrow \beta}{\forall \alpha. \forall \beta. \alpha \rightarrow \beta \succcurlyeq \alpha_i \rightarrow \alpha_{i+1}}}{...}$$
