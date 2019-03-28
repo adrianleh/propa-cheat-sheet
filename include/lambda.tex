@@ -46,6 +46,7 @@ $$\Rightarrow \lambda x. (\lambda y.y) (\lambda z.z) x))$$
 
 \subsubsection{Rekursion}
 Parametrisiere rekursiven Aufruf als erstes Argument, verwende Y kombinator\\
+$$Y = \lambda f.\: (\lambda x.\: f\: (x\: x))(\lambda x. \: f \: (x \: x))$$
 Beispiel:\\
 $$f = \lambda fak. \lambda n. \medspace (\text{isZero}\medspace n)  \medspace c_1 \medspace (\text{times} \medspace n \medspace (fak (\text{sub}\medspace n \medspace c_1)))$$
 $$fak = Y \medspace f$$
