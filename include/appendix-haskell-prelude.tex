@@ -36,8 +36,9 @@ take :: Int -> [a] -> [a]
 drop :: Int -> [a] -> [a]
 splitAt :: Int -> [a] -> ([a], [a])
 takeWhile :: (a -> Bool) -> [a] -> [a]
-dropWhile :: (a -> Bool) -> [a] -> [a] 
-break :: (a -> Bool) -> [a] -> ([a], [a]) -- break, applied to a predicate p and a list xs, returns a tuple where first element is longest prefix (possibly empty) of xs of elements that do not satisfy p and second element is the remainder of the list
+dropWhile :: (a -> Bool) -> [a] -> [a]
+span :: (a -> Bool) -> [a] -> ([a], [a]) -- Tuple longest list of elements satisfying p and second element remainder
+break :: (a -> Bool) -> [a] -> ([a], [a]) -- inverse of span, applied to a predicate p and a list xs, returns a tuple where first element is longest prefix (possibly empty) of xs of elements that do not satisfy p and second element is the remainder of the list
 zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
 zip = zipWith (,)
 unzip :: [(a, b)] -> ([a], [b])
