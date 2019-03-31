@@ -129,14 +129,17 @@ MyTask myTask = new MyTask(...);
 fjPool.invoke(myTask);
 \end{minted}
 \begin{minted}[breaklines]{java}
-public class MyTask extends RecursiveTask<Integer> {
+public class MyTask<T> extends RecursiveTask<T> {
 @Override
-public Integer compute() {
-// calculate something and return if problem small
-MyTask leftTask = new MyTask(...); 
-MyTask rightTask = new MyTask(...);
-leftTask.fork();
-rightTask.compute();
-leftTask.join();
+public T compute() {
+     if(baseCase) { return baseValue; }
+     // calculate something and return if problem small
+     MyTask leftTask = new MyTask(...); 
+     MyTask rightTask = new MyTask(...);
+     leftTask.fork();
+     T right = rightTask.compute();
+     T left = leftTask.join();
+     return operation(left, right);
+}
 }
 \end{minted}
