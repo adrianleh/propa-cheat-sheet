@@ -82,13 +82,13 @@ for (int i = 0; i < 10; i++) {
     final int currentValue = i;
     futures.add(executorService.submit(() -> { return currentValue; }));
 }
+executorService.shutdown(); // Make sure all values are in
 for (Future<Integer> future : futures) { 
     try {
          Integer result = future.get();
          System.out.println(result);
     } catch (ExecutionException ex) {}
 } 
-executorService.shutdown();
 \end{minted}
 
 \paragraph{\texttt{Completeable Future}}
