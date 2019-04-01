@@ -16,6 +16,7 @@
 \usepackage{centernot}
 \usepackage{listings}
 \theoremstyle{break}
+\usepackage{appendix}
 
 \lstset{
 	basicstyle=\ttfamily,
@@ -43,7 +44,8 @@
 	\input{include/design-by-contract}
 	\input{include/compiler}
 	\clearpage
-	\section{Appendices}
+        \section{Appendices}
+        \begin{appendices}
 	\input{include/appendix-haskell-prelude}
 	\newpage
 	\input{include/appendix-prolog-functions}
@@ -51,4 +53,5 @@
 	\input{include/appendix-java-parallel}
 	\newpage
 	\input{include/appendix-byte-code}
+        \end{appendices}
 \end{document}
