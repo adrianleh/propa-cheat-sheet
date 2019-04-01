@@ -111,3 +111,20 @@ Usage:
 \begin{minted}[breaklines]{haskell}
 value = maybe orElse mappingAToB maybe instance
 \end{minted}
+\subsection{Type classes}
+\begin{minted}[breaklines]{haskell}
+class (Num a) where
+  (+) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  fromInteger :: Integer -> a
+
+data PowerSeries = PS [Double]
+
+instance (Num PowerSeries) where
+  (PS p) + (PS q) = PS (addP p q)
+  (PS p) * (PS q) = PS (multP p q)
+  negate (PS p) = PS (map negate p)
+  fromInteger i = PS (fromStep (fromInteger i) (const 0))
+\end{minted}
+
