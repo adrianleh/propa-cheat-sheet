@@ -9,6 +9,16 @@ boolean Thread#isAlive()
 void Thread#sleep(int)
 void Thread#join()
 \end{minted}
+\paragraph{\texttt{Monitor}}
+\begin{minted}[breaklines]{java}
+synchronized(object o) {
+  try {
+    wait(int time); // milliseconds
+  } catch (Interrupted Exception e) {
+    interrupt(); //clean end
+  }
+}
+\end{minted}
 \paragraph{\texttt{volatile}}
 \begin{minted}[breaklines]{java}
 class A {
