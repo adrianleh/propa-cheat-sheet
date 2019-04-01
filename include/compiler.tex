@@ -34,3 +34,10 @@ Falls $\alpha \Rightarrow^{*} \epsilon$, so zusätzlich gelten:
 $$Follow(A) \cap First(\beta) = \emptyset$$
 \subsection{Abstrakte Syntax}
 \includegraphics[width=\columnwidth]{images/abstract_syntax.png}
+\subsection{Parser}
+Flüchtigkeitsfehler-Checklist:
+\begin{enumerate}
+	\item breaks gesetzt?
+	\item Bei ($X\rightarrow \epsilon \medspace \vert \medspace Y$)-Produktionen, $Follow(X)$ nicht vergessen?
+	\item Bei Binary operations, linken parameter deklariert?
+\end{enumerate}
